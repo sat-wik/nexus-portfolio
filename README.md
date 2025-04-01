@@ -1,36 +1,155 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Nexus Portfolio
 
-## Getting Started
+A modern, interactive portfolio website built with Next.js, TypeScript, and Tailwind CSS. Features smooth animations, responsive design, and an engaging user experience.
 
-First, run the development server:
+## 🚀 Features
 
+- **Interactive UI Components**
+  - Floating navigation bar
+  - Custom scrollbar
+  - Interactive cursor
+  - Particle text effects
+  - Smooth transitions and animations
+
+- **Project Showcase**
+  - Dynamic accordion-style project display
+  - Technology-specific icons
+  - Responsive grid layout
+  - Image optimization
+
+- **Skills Section**
+  - Interactive technology grid
+  - Dynamic spotlight effects
+  - Detailed tooltips with experience levels
+  - Smooth scroll transitions
+
+- **Modern Tech Stack**
+  - Next.js 14
+  - TypeScript
+  - Tailwind CSS
+  - Framer Motion
+  - React Icons
+
+## 🛠️ Technologies Used
+
+- **Frontend Framework**: Next.js
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Animations**: Framer Motion
+- **Icons**: React Icons
+- **Deployment**: Vercel
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js 18.x or later
+- npm or yarn
+
+### Installation
+
+1. Clone the repository
+```bash
+git clone https://github.com/sat-wik/nexus-portfolio.git
+```
+
+2. Navigate to the project directory
+```bash
+cd nexus-portfolio
+```
+
+3. Install dependencies
+```bash
+npm install
+# or
+yarn install
+```
+
+4. Run the development server
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+5. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📁 Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+nexus-portfolio/
+├── public/
+│   ├── fonts/
+│   └── projects/
+├── src/
+│   └── app/
+│       ├── components/
+│       │   ├── AccordionProjects/
+│       │   ├── FloatingNav/
+│       │   ├── InteractiveCursor/
+│       │   └── TransitionSection/
+│       ├── globals.css
+│       ├── layout.tsx
+│       └── page.tsx
+├── package.json
+├── tailwind.config.ts
+└── tsconfig.json
+```
 
-## Learn More
+## 🎨 Customization
 
-To learn more about Next.js, take a look at the following resources:
+### Projects
+Edit the projects array in `src/app/page.tsx` to add or modify your projects:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```typescript
+const projects = [
+  {
+    title: 'Project Name',
+    description: 'Project description',
+    image: '/projects/project-image.avif',
+    technologies: ['Tech1', 'Tech2'],
+    link: 'https://github.com/username/project'
+  }
+];
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Skills
+Modify the skills section in `src/app/components/TransitionSection/index.tsx` to update your technology stack.
 
-## Deploy on Vercel
+## 📱 Responsive Design
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The portfolio is fully responsive and optimized for:
+- Desktop (1920px and above)
+- Laptop (1366px to 1919px)
+- Tablet (768px to 1365px)
+- Mobile (below 768px)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🚀 Deployment
+
+This project is configured for easy deployment on Vercel:
+
+1. Push your code to GitHub
+2. Connect your repository to Vercel
+3. Deploy!
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/sat-wik/nexus-portfolio/issues).
+
+## 👤 Author
+
+**Satwik Pattanaik**
+- GitHub: [@sat-wik](https://github.com/sat-wik)
+- LinkedIn: [Your LinkedIn](https://linkedin.com/in/your-profile)
+- Email: your.email@example.com
+
+## 🙏 Acknowledgments
+
+- [Next.js](https://nextjs.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Framer Motion](https://www.framer.com/motion/)
+- [React Icons](https://react-icons.github.io/react-icons/)
