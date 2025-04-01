@@ -1,103 +1,155 @@
-import Image from "next/image";
+'use client';
+
+import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
+import { Parallax } from 'react-scroll-parallax';
+import FloatingNav from './components/FloatingNav';
+import DarkBackground from './components/DarkBackground';
+import InteractiveCursor from './components/InteractiveCursor';
+import CustomScrollbar from './components/CustomScrollbar';
+import AccordionProjects from './components/AccordionProjects';
+import ParticleText from './components/ParticleText';
+import TransitionSection from './components/TransitionSection';
+
+const projects = [
+  {
+    title: 'Stock Market Platform',
+    description: 'A comprehensive real-time stock market monitoring and prediction platform featuring ML-based price predictions, interactive dashboards, and WebSocket-powered live updates.',
+    image: '/projects/stock-market.avif',
+    technologies: ['Node.js', 'React', 'Python', 'TensorFlow', 'PostgreSQL'],
+    link: 'https://github.com/sat-wik/stock-market-platform'
+  },
+  {
+    title: 'AWS Helper Extension',
+    description: 'A browser extension built with React and TypeScript that simplifies AWS resource management and monitoring, featuring a Python backend for AWS service integration.',
+    image: '/projects/aws-helper.webp',
+    technologies: ['TypeScript', 'React', 'Python', 'AWS SDK', 'Vite'],
+    link: 'https://github.com/sat-wik/aws-helper-extension'
+  },
+  {
+    title: 'Lectura',
+    description: 'An innovative web application that enhances online learning by generating unlimited testing resources and promoting better study habits through interactive features.',
+    image: '/projects/lectura.avif',
+    technologies: ['JavaScript', 'React', 'Node.js', 'CSS'],
+    link: 'https://github.com/sat-wik/Lectura'
+  },
+  {
+    title: 'OfferFlow',
+    description: 'A comprehensive job application tracking system with a dashboard for managing applications, interviews, and offers, featuring real-time updates.',
+    image: '/projects/offerflow.avif',
+    technologies: ['JavaScript', 'React', 'Node.js', 'MongoDB'],
+    link: 'https://github.com/sat-wik/OfferFlow'
+  },
+];
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const { scrollYProgress } = useScroll();
+  const opacity = useSpring(
+    useTransform(scrollYProgress, [0, 0.2], [1, 0]),
+    { stiffness: 100, damping: 30 }
+  );
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+  return (
+    <main className="relative min-h-screen">
+      <InteractiveCursor />
+      <CustomScrollbar />
+      <FloatingNav />
+      <DarkBackground />
+
+      {/* Hero Section */}
+      <section id="home" className="min-h-screen flex items-center justify-center px-4 relative">
+        <Parallax translateY={[-20, 20]} className="w-full">
+          <div className="max-w-4xl mx-auto text-center">
+            <motion.div
+              className="relative"
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: 'easeOut' }}
+            >
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                className="mb-6"
+              >
+                <span className="text-6xl md:text-8xl font-bold">Hello, I'm</span>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="mb-6"
+              >
+                <ParticleText text="SATWIK" />
+              </motion.div>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                className="text-xl text-gray-300"
+              >
+                Full Stack Developer
+              </motion.p>
+            </motion.div>
+          </div>
+        </Parallax>
+      </section>
+
+      {/* Skills Portal */}
+      <section id="skills">
+        <TransitionSection />
+      </section>
+
+      {/* Projects Section */}
+      <section id="accordion-projects" className="py-20 w-full">
+        <div className="container mx-auto px-4 flex flex-col items-center justify-center">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-4xl font-bold text-white mb-12 text-center"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+            Featured Projects
+          </motion.h2>
+          <div className="w-full flex justify-center">
+            <AccordionProjects projects={projects} />
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" className="min-h-screen py-20 px-4 relative flex items-center">
+        <Parallax translateY={[-20, 20]} className="w-full">
+          <div className="max-w-4xl mx-auto text-center">
+            <motion.h2
+              className="text-4xl md:text-5xl font-bold mb-8"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true, margin: "-100px" }}
+            >
+              Let's Work Together
+            </motion.h2>
+            <motion.p
+              className="text-xl text-gray-300 mb-12"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ delay: 0.2 }}
+            >
+              Have a project in mind? Let's bring it to life.
+            </motion.p>
+            <motion.a
+              href="mailto:your.email@example.com"
+              className="interactive inline-block bg-gradient-to-r from-blue-500 to-purple-500 text-white px-8 py-4 rounded-full text-lg font-semibold hover:scale-105 transition-transform"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ delay: 0.4 }}
+            >
+              Get in Touch
+            </motion.a>
+          </div>
+        </Parallax>
+      </section>
+    </main>
   );
 }
