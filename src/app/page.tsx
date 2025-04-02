@@ -138,7 +138,7 @@ export default function Home() {
               Have a project in mind? Let's bring it to life.
             </motion.p>
             <motion.a
-              href="mailto:your.email@example.com"
+              href="mailto:satwikp360@gmail.com"
               className="interactive inline-block bg-gradient-to-r from-blue-500 to-purple-500 text-white px-8 py-4 rounded-full text-lg font-semibold hover:scale-105 transition-transform"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
